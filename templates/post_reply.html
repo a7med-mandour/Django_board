@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+{% block title %}
+{{topic.topic}}
+{% endblock %}
+    
+{% block menu%}
+<li class="breadcrumb-item "><a href="{% url 'home' %}">DISCUSSION BOARDS</a></li>
+<li  class="breadcrumb-item " ><a href="{% url 'board' topic.board.name %}">{{topic.board.name  | capfirst}}</a> </li>
+<li  class="breadcrumb-item " > <a href="{% url 'topic_post' topic.board.name topic.topic%}">{{topic.topic}} </a></li>
+<li  class="breadcrumb-item active" > Reply</li>
+
+
+{% endblock%}
+
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{post.as_p}}
+    <button type="submit" class="btn btn-primary"> post the reply</button>
+</form>
+
+{% for post in topic.posts.all%}
+<img src="{% static 'img/1.png'%}" alt="user photo", width="50">
+
+{{post.owner.username}} <br>
+{{post.date}}<br>
+Post: <br>
+{{post.massage}} <br>
+
+
+
+
+
+
+
+{% endfor%}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+        

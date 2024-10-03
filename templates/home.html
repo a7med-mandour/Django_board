@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %} BOARDS {% endblock %}
+
+{% block menu%}
+<li class="breadcrumb-item active">DISCUSSION BOARDS </li>
+
+{% endblock%}
+
+
+{% block content %}
+      
+    
+<table class="table" >
+    <thead class="table-dark">
+        <tr>
+            <td>Boards</td>
+            <td>Topics</td>
+            <td>Posts</td>
+            <td>Last modified</td>    
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in boards%}
+
+        <tr >
+            <th><a href="{% url 'board' x.name %}">{{x.name}}</a> 
+                <small class="text-muted d-block">{{x.description}}</small>
+            </th>
+            <th>{{x.topics.count}}</th>
+            <th>{{x.post_count}}</th>
+            {% if x%}
+            <th>{{x.get_last_post.date}} by {{user.username}} </th>
+            {%else%}
+            <small>no posts</small>
+            {%endif%}
+           
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="alert {{ message.tags }}">
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{{user.username}}
+{% endblock %}

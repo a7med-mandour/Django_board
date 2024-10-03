@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{b_id.name}}
+{% endblock %}
+    
+{% block menu%}
+<li class="breadcrumb-item "><a href="{% url 'home' %}">DISCUSSION BOARDS</a></li>
+<li  class="breadcrumb-item active" >{{b_id.name  | capfirst}} </li>
+{% endblock%}
+    
+{% block content %}
+
+<a href="{%url 'new_topic' b_id.name %}" class="btn btn-primary">Add new </a> 
+<br>
+<br>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>topics</th>
+            <th>created_by</th>
+            <th>views</th>
+            <th>created_dt</th>
+            <th>post_no</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for topic in b_id.topics.all%}
+        <tr>
+            <td>
+                <a href="{% url 'topic_post' b_id.name topic.topic%}">{{topic.topic}}</a>
+            </td>
+            <td>{{topic.owner}}</td>
+            <td>{{topic.view}}</td>
+            <td>{{topic.date}}</td>
+            <td>{{topic.posts.count}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+        
+</body>
+
+</html>
+

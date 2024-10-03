@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+</head>
+{%block body%}
+<body>
+    <div class="container">
+       
+            <ol class="breadcrumb"> <br>
+                
+                <a href="#" class="btn btn-primary d-flex justify-content-end"> my account</a> 
+
+            {% block menu%}
+            {% endblock%}
+
+            </ol>
+        
+    
+{% block content %}
+{% endblock %}
+        
+
+
+    </div>
+</body>
+{% endblock %}
+
+</html>

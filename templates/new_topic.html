@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+New topic
+{% endblock %}
+    
+{% block menu%}
+<li class="breadcrumb-item "><a href="{% url 'home' %}">DISCUSSION BOARDS</a></li>
+<li  class="breadcrumb-item " ><a href="{% url 'board' board.name %}">{{board.name  | capfirst}}</a> </li>
+<li  class="breadcrumb-item active" >New topic </li>
+
+{% endblock%}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+<div class="mb-3">  
+    
+    {{topic.topic.label_tag}}  
+    {{topic.topic|attr:"class:form-control"}}
+  
+</div>
+
+<div class="my-4">
+
+    {{post.massage.label_tag}}
+    {{post.massage|attr:"class:form-control"}}
+</div>
+    <input type="submit" value="SAVE">
+</form>
+
+
+
+{% endblock %}
+        
+
+
+
+</body>
+
+</html>

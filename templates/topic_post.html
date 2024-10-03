@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+{% block title %}
+{{topic.topic}}
+{% endblock %}
+    
+{% block menu%}
+<li class="breadcrumb-item "><a href="{% url 'home' %}">DISCUSSION BOARDS</a></li>
+<li  class="breadcrumb-item " ><a href="{% url 'board' topic.board.name %}">{{topic.board.name  | capfirst}}</a> </li>
+<li  class="breadcrumb-item active" > {{topic.topic}} </li>
+
+{% endblock%}
+
+
+{% block content %}
+
+<a href="{% url 'post_reply' topic.board.name topic.topic%}" class="btn btn-primary">Reply</a> <br>
+{%for post in topic.posts.all%}
+<img src="{% static 'img/1.png'%}" alt="user photo", width="50">
+
+{{post.owner.username}} <br>
+{{post.date}}<br>
+Post: <br>
+{{post.massage}} <br>
+{%if post.owner == user%}
+<a href="{% url 'update_post' topic.board.name topic.topic post.pk%}" class="btn btn-primary"> edit</a>
+{%endif%}
+
+
+
+
+
+
+
+{% endfor %}
+
+
+
+{% endblock %}
+        
