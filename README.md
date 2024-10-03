@@ -4,7 +4,7 @@
 
 ## Overview
 
-**Discussion Board** is a web application built using Django that allows users to create, participate in, and manage discussion boards. Users can post questions, reply to discussions, and engage with others in a user-friendly environment.
+**Discussion Board** is a web application built using Django that allows users to create, participate in, and manage discussion boards. Users can post questions, reply to discussions, and engage with others in a user-friendly environment. And use as low as front-end technology as i can
 
 ## Features
 
@@ -21,6 +21,6 @@
 - Python 3.10.+
 - Django 5.x
 - SQLite (or PostgreSQL, depending on your configuration)
-- HTML, CSS, JavaScript
+- HTML, CSS
 - Bootstrap for styling
 
