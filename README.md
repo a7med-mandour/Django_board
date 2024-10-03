@@ -8,6 +8,7 @@
 
 ## Features
 
+- Use PostgreSQL database 
 - User authentication (registration, login, logout, change password)
 - Customized admin panel
 - Create and manage discussion threads
